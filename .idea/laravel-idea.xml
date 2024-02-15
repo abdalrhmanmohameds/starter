@@ -6,6 +6,8 @@
         <option name="generationStringSettings">
           <map>
             <entry key="createController:classSuffix" value="Controllers" />
+            <entry key="createEloquentScope:namespace" value="Models\Scopes" />
+            <entry key="createModel:namespace" value="Models" />
           </map>
         </option>
       </LaravelCodeGeneration>
