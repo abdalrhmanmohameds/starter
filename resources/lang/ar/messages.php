@@ -12,13 +12,29 @@ return [
     | has failed, such as for an invalid token or invalid new password.
     |
     */
-
-    'hello gus' => 'اهلا بكم'  ,
-    'hello' => 'اهلا'  ,
-    'name required' => 'اسم العرض مطلوب',
-    'name unique' => 'اسم يجب الا يتكرر',
+    'id' => 'الرقم التسلسلي',
+    'offer name' => 'اسم العرض',
+    'offer price' => 'سعر العرض',
+    'offer details' => 'تفاصيل العرض',
+    'Enter your name arabic' => 'اسم العرض بالعربي',
+    'Enter your name english' => 'اسم العرض بالانجليزي',
+    'Enter your price arabic' => 'سعر العرض بالعربي ',
+    'Enter your price english' => 'سعر العرض بالانجليزي ',
+    'Enter your details arabic' => 'تفاصيل العرض بالعربي ',
+    'Enter your details english' => 'تفاصيل العرض بالانجليزي ',
+    'Search' => 'بحث',
+    'save' => 'حفظ ',
+    'hello gus' => 'اهلا بكم',
+    'hello' => 'اهلا',
+    'arabic name required' => 'اسم العرض مطلوب بالعربي',
+    'english name required' => 'اسم العرض مطلوب بالانجليزي',
     'price required' => 'السعر مطلوب',
-    'price numeric' => 'السعر يجب ان يكون ارقام',
-    'details required' => 'التفاصيل مطلوبة',
-    'success' => 'تمت اضافة المنتج بنجاح',
+    'arabic name unique' => 'اسم العرض موجود بالعربي',
+    'english name unique' => 'اسم العرض موجود بالانجليزي',
+    'price numeric' => 'السعر يجب ان يكون ارقام ',
+    'arabic details required' => 'التفاضيل مطلوبة بالعربي',
+    'english details required' => 'التفاصيل مطلوبة بالانجليزي',
+    'success' => 'تمت اضافة منتج جديد',
+    'Add Your Offer' => 'اضافة منتج جديد',
+
 ];

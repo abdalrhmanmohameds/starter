@@ -12,14 +12,29 @@ return [
     | has failed, such as for an invalid token or invalid new password.
     |
     */
-
+    'id' => 'id',
+    'offer name' => 'offer name',
+    'offer price' => 'offer price',
+    'offer details' => 'offer price',
+    'Enter your name arabic' => 'Enter your name arabic',
+    'Enter your name english' => 'Enter your name english',
+    'Enter your price arabic' => 'Enter your price arabic',
+    'Enter your price english' => 'Enter your price english',
+    'Enter your details arabic' => 'Enter your details arabic',
+    'Enter your details english' => 'Enter your details english',
+    'Search' => 'Search',
+    'save' => 'save ',
     'hello gus' => 'hello gus'  ,
     'hello' => 'hello'  ,
-    'name required' => 'the name must be required',
-    'price required' => 'the price must be required',
-    'name unique' => 'the name must be unique',
-    'price numeric' => 'the price must be numeric',
-    'details required' => 'the details must be required',
+    'arabic name required' => 'arabic name required',
+    'english name required' => 'english name required',
+    'price required' => 'price required',
+    'arabic name unique' => 'arabic name unique',
+    'english name unique' => 'english name unique',
+    'price numeric' => 'price numeric',
+    'arabic details required' => 'arabic details required',
+    'english details required' => 'english details required',
     'success' => 'save successfully',
+    'Add Your Offer' => 'Add Your Offer',
 
 ];

@@ -16,19 +16,18 @@ Route::get('/', function () {
 });
 
 
-
 // required parameter
 
-Route::get('/show',function(){
-     return('hello welcome');
+Route::get('/show', function () {
+    return ('hello welcome');
 });
 
-Route::get('show_number/{id}',function($id){
-    return($id);
+Route::get('show_number/{id}', function ($id) {
+    return ($id);
 })->name('a');
 
-Route::get('show_string/{id}',function(){
-    return('welcome');
+Route::get('show_string/{id}', function () {
+    return ('welcome');
 })->name('b');
 
 //Route::namespace('Front')->group(function (){
@@ -89,7 +88,7 @@ Route::get('show_string/{id}',function(){
 //  Route::get('users','UserController@showAdaminName');
 //});
 ///////////////////////////////
-Route::resource('news','NewsController');
+Route::resource('news', 'NewsController');
 
 //Route::group('news',function(){
 //    Route::resource('news','NewsController@index');
@@ -113,14 +112,14 @@ Route::resource('news','NewsController');
 //    return view('welcome',$data,compact('obj'));
 //});
 
-Route::get('/','Front\UserController@getIndex');
+Route::get('/', 'Front\UserController@getIndex');
 
 ////////////route landing /////////
-Route::get('landing',function (){
-   return view('landing');
+Route::get('landing', function () {
+    return view('landing');
 });
 
-Route::get('about',function (){
+Route::get('about', function () {
     return view('about_us');
 });
 
@@ -129,18 +128,19 @@ Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');
 
-Route::get('/redirect/{service}','SocialController@redirect');
+Route::get('/redirect/{service}', 'SocialController@redirect');
 
-Route::get('/callback/{service}','SocialController@callback');
+Route::get('/callback/{service}', 'SocialController@callback');
 
-Route::get('fillabel','CrudController@getOffer');
+Route::get('fillabel', 'CrudController@getOffer');
 
 
-   //Route::get('store','CrudController@store');
-    Route::group(['prefix' => LaravelLocalization::setLocale(),'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]], function(){
-      //  Route::get('store','CrudController@store')
-        Route::group(['prefix' => 'offers'],function (){
-        Route::get('create','CrudController@create');
-        Route::post('store','CrudController@store')->name('offers.store');
+//Route::get('store','CrudController@store');
+Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']], function () {
+    //  Route::get('store','CrudController@store')
+    Route::group(['prefix' => 'offers'], function () {
+        Route::get('create', 'CrudController@create');
+        Route::post('store', 'CrudController@store')->name('offers.store');
+        Route::get('all', 'CrudController@getAllOffer');
     });
 });
