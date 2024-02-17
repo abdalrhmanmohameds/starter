@@ -13,7 +13,13 @@ return [
     |
     */
 
-    'hello gus'=>'اهلا بكم',
-    'hello'=>'اهلا',
+    'hello gus' => 'hello gus'  ,
+    'hello' => 'hello'  ,
+    'name required' => 'the name must be required',
+    'price required' => 'the price must be required',
+    'name unique' => 'the name must be unique',
+    'price numeric' => 'the price must be numeric',
+    'details required' => 'the details must be required',
+    'success' => 'save successfully',
 
 ];

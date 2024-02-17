@@ -13,7 +13,12 @@ return [
     |
     */
 
-    'اهلا بكم' => 'hello gus',
-    'اهلا' => 'hello',
-
+    'hello gus' => 'اهلا بكم'  ,
+    'hello' => 'اهلا'  ,
+    'name required' => 'اسم العرض مطلوب',
+    'name unique' => 'اسم يجب الا يتكرر',
+    'price required' => 'السعر مطلوب',
+    'price numeric' => 'السعر يجب ان يكون ارقام',
+    'details required' => 'التفاصيل مطلوبة',
+    'success' => 'تمت اضافة المنتج بنجاح',
 ];

@@ -135,8 +135,12 @@ Route::get('/callback/{service}','SocialController@callback');
 
 Route::get('fillabel','CrudController@getOffer');
 
-Route::group(['prefix' => 'offers'],function (){
+
    //Route::get('store','CrudController@store');
-    Route::get('create','CrudController@create');
-    Route::post('store','CrudController@store')->name('offers.store');
+    Route::group(['prefix' => LaravelLocalization::setLocale(),'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]], function(){
+      //  Route::get('store','CrudController@store')
+        Route::group(['prefix' => 'offers'],function (){
+        Route::get('create','CrudController@create');
+        Route::post('store','CrudController@store')->name('offers.store');
+    });
 });

@@ -50,7 +50,8 @@ class CrudController extends Controller
         $validator = validator::make($request->all(),$rules,$messages);
 
         if ($validator->fails()){
-            return $validator->errors();
+//            return $validator->errors();
+            return redirect()->back()->withErrors($validator)->withInput($request->all());
         }
 
             //insert ////////////////
@@ -60,14 +61,16 @@ class CrudController extends Controller
                 'details' => $request -> details,
 
             ]);
-            return 'saved successfully';
+//          return 'save successfully';
+            return redirect()->back()->with(['success' => __('messages.success')]);
     }
     protected function getMessages(){
         return  $Messages =  [
-            'name.required' => 'اسم العرض مطلوب',
-            'name.unique' => 'اسم العرض موجود',
-            'price.required' => 'سعر العرض مطلوب',
-            'price.numeric' => 'سعر العرض يجب ان يكون ارقام',
+            'name.required' => __('messages.name required'),
+            'name.unique' => __('messages.name unique'),
+            'price.required' => __('messages.price required'),
+            'price.numeric' => __('messages.price numeric'),
+            'details.required' => __('messages.details required'),
         ];
     }
 
