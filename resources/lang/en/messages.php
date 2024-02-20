@@ -22,8 +22,12 @@ return [
     'Enter your price english' => 'Enter your price english',
     'Enter your details arabic' => 'Enter your details arabic',
     'Enter your details english' => 'Enter your details english',
+    'Edit Offer' => 'Edit Offer',
+    'chonse offer photo' => 'chonse offer photo',
     'Search' => 'Search',
     'save' => 'save ',
+    'edit' => 'edit',
+    'delete' => 'delete',
     'hello gus' => 'hello gus'  ,
     'hello' => 'hello'  ,
     'arabic name required' => 'arabic name required',
@@ -36,5 +40,6 @@ return [
     'english details required' => 'english details required',
     'success' => 'save successfully',
     'Add Your Offer' => 'Add Your Offer',
+    'operation' => 'operation',
 
 ];

@@ -4,12 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\OfferRequest;
 use App\Models\Offer;
+use App\Models\Video;
+use App\Traits\OfferTrait;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 class CrudController extends Controller
 {
+    use OfferTrait;
     /**
      * Create a new controller instance.
      *
@@ -58,10 +61,9 @@ class CrudController extends Controller
         //////////////////////////////////////////////////////////////////////////////////////////////
 //              save photo
 
-        $file_extension = $request->photo->getClientOriginalExtension();          //file extension
-        $file_name = time() . '.' . $file_extension;                             //file name
-        $path = 'images/offers';                                                //path photo
-        $request->photo->move($path, $file_name);                              //move photo
+        $file_name = $this->saveImages($request->photo, 'images/offers');
+
+        //move photo
 
         //insert ////////////////
         Offer::create([
@@ -103,4 +105,34 @@ class CrudController extends Controller
             'price')->get(); // return collection
         return view('offers.all', compact('offers'));
     }
+
+    public function editOffer($offer_id)
+    {
+//        Offer::findOrFail($offer_id);
+        $offer = Offer::find($offer_id);
+        if (!$offer)
+            return redirect()->back();
+        $offer = Offer::select('id', 'name_ar', 'name_en', 'details_ar', 'details_en', 'price')->find($offer_id);
+        return view('offers.edit', compact('offer'));
+    }
+
+    public function updateOffer(OfferRequest $request, $offer_id)
+    {
+
+        $offer = Offer::select('id', 'name_ar', 'name_en', 'details_ar', 'details_en', 'price')->find($offer_id);
+        //validate
+        if (!$offer)
+            return redirect()->back();
+
+        //update
+        $offer->update($request->all());
+        return redirect()->back()->with(['success' => 'تمت العملية بنجاح']);
+
+    }
+
+    public function getVideo(){
+        $video = Video::first();
+        return view('video')->with('video',$video);
+    }
+
 }

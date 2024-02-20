@@ -16,6 +16,10 @@ return [
     'offer name' => 'اسم العرض',
     'offer price' => 'سعر العرض',
     'offer details' => 'تفاصيل العرض',
+    'chonse offer photo' => 'اختر صورة العرض',
+    'Edit Offer' => 'تعديل العرض',
+    'edit' => 'تعديل',
+    'delete' => 'حذف',
     'Enter your name arabic' => 'اسم العرض بالعربي',
     'Enter your name english' => 'اسم العرض بالانجليزي',
     'Enter your price arabic' => 'سعر العرض بالعربي ',
@@ -36,5 +40,6 @@ return [
     'english details required' => 'التفاصيل مطلوبة بالانجليزي',
     'success' => 'تمت اضافة منتج جديد',
     'Add Your Offer' => 'اضافة منتج جديد',
+    'operation' => 'الاجراءات',
 
 ];
