@@ -23,7 +23,8 @@ return [
     'Enter your details arabic' => 'Enter your details arabic',
     'Enter your details english' => 'Enter your details english',
     'Edit Offer' => 'Edit Offer',
-    'chonse offer photo' => 'chonse offer photo',
+    'choose offer photo' => 'choose offer photo',
+    'photo offer' => 'photo offer',
     'Search' => 'Search',
     'save' => 'save ',
     'edit' => 'edit',
@@ -41,5 +42,6 @@ return [
     'success' => 'save successfully',
     'Add Your Offer' => 'Add Your Offer',
     'operation' => 'operation',
-
+    'error' => 'error',
+    'successfully' => 'successfully',
 ];

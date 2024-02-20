@@ -106,7 +106,7 @@
         </form>
     </div>
 </nav>
-<div class="flex-center po  sition-ref full-height">
+<div class="flex-center position-ref full-height">
 
 
     <div class="content">

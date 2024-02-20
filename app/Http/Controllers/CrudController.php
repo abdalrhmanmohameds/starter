@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\VideoViewer;
 use App\Http\Requests\OfferRequest;
 use App\Models\Offer;
 use App\Models\Video;
@@ -13,6 +14,7 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 class CrudController extends Controller
 {
     use OfferTrait;
+
     /**
      * Create a new controller instance.
      *
@@ -116,6 +118,16 @@ class CrudController extends Controller
         return view('offers.edit', compact('offer'));
     }
 
+    public function deleteOffer($offer_id)
+    {
+        $offer = Offer::find($offer_id);
+        if (!$offer) {
+            return redirect()->back()->with(['error' => __('messages.error')]);
+        }
+        $offer->delete();
+        return redirect()->back()->with(['successfully' => __('messages.successfully')]);
+    }
+
     public function updateOffer(OfferRequest $request, $offer_id)
     {
 
@@ -130,9 +142,10 @@ class CrudController extends Controller
 
     }
 
-    public function getVideo(){
+    public function getVideo()
+    {
         $video = Video::first();
-        return view('video')->with('video',$video);
+        event(new videoViewer($video));
+        return view('video')->with('video', $video);
     }
-
 }

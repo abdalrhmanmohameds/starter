@@ -64,7 +64,8 @@
         .m-b-md {
             margin-bottom: 30px;
         }
-        .table{
+
+        .table {
             margin: 2em 2em;
         }
     </style>
@@ -80,11 +81,11 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
-            <li class="nav-item active">
-                <a class="nav-link"
-                   href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">{{ $properties['native'] }}
-                    <span class="sr-only">(current)</span></a>
-            </li>
+                <li class="nav-item active">
+                    <a class="nav-link"
+                       href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">{{ $properties['native'] }}
+                        <span class="sr-only">(current)</span></a>
+                </li>
             @endforeach
 
             {{--  /////////////////example localizatioin تعدد اللغات///////////////////--}}
@@ -93,10 +94,10 @@
 
             {{--                    @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)--}}
             {{--                        <li>--}}
-                {{--                            <a rel="alternate" hreflang="{{ $localeCode }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">--}}
-                    {{--                                {{ $properties['native'] }}--}}
-                    {{--                            </a>--}}
-                {{--                        </li>--}}
+            {{--                            <a rel="alternate" hreflang="{{ $localeCode }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">--}}
+            {{--                                {{ $properties['native'] }}--}}
+            {{--                            </a>--}}
+            {{--                        </li>--}}
             {{--                    @endforeach--}}
 
             {{--  /////////////////example localizatioin تعدد اللغات///////////////////--}}
@@ -110,29 +111,44 @@
     </div>
 </nav>
 <div>
-<table class="table text-lg-center">
-    <thead>
-    <tr>
-        <th scope="col">{{__('messages.id')}}</th>
-        <th scope="col">{{__('messages.offer name')}}</th>
-        <th scope="col">{{__('messages.offer price')}}</th>
-        <th scope="col">{{__('messages.offer details')}}</th>
-        <th scope="col">{{__('messages.operation')}}</th>
+    @if(Session::has('error'))
+        <div class="alert alert-danger">{{__('messages.error')}}</div>
+    @endif
 
-    </tr>
-    </thead>
-    <tbody>
-    @foreach($offers as $offer)
-    <tr>
-        <th scope="row">{{$offer -> id}}</th>
-        <td>{{$offer -> name}}</td>
-        <td>{{$offer -> price}}</td>
-        <td>{{$offer -> details}}</td>
-        <td><a href="{{url('offers/edit/'.$offer -> id)}}" class="btn btn-success">{{__('messages.edit')}}</a></td>
-    </tr>
-    @endforeach
-    </tbody>
-</table>
+    @if(Session::has('successfully'))
+        <div class="alert alert-success">{{__('messages.successfully')}}</div>
+    @endif
+    <table class="table text-lg-center">
+        <thead>
+        <tr>
+            <th scope="col">{{__('messages.id')}}</th>
+            <th scope="col">{{__('messages.offer name')}}</th>
+            <th scope="col">{{__('messages.offer price')}}</th>
+            <th scope="col">{{__('messages.offer details')}}</th>
+            <th scope="col">{{__('messages.photo offer')}}</th>
+            <th scope="col">{{__('messages.operation')}}</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        @foreach($offers as $offer)
+            <tr>
+                <th scope="row">{{$offer -> id}}</th>
+                <td>{{$offer -> name}}</td>
+                <td>{{$offer -> price}}</td>
+                <td>{{$offer -> details}}</td>
+                <td><img src="{{asset('images/offers/'.$offer->photo)}}"></td>
+
+                <td>
+                    <a href="{{url('offers/edit/'.$offer -> id)}}" class="btn btn-success">{{__('messages.edit')}}</a>
+                    <a href="{{route('offers.delete',$offer -> id)}}"
+                       class="btn btn-danger">{{__('messages.delete')}}</a>
+                </td>
+
+            </tr>
+        @endforeach
+        </tbody>
+    </table>
 </div>
 </body>
 </html>

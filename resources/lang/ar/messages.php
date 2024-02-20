@@ -16,7 +16,8 @@ return [
     'offer name' => 'اسم العرض',
     'offer price' => 'سعر العرض',
     'offer details' => 'تفاصيل العرض',
-    'chonse offer photo' => 'اختر صورة العرض',
+    'choose offer photo' => 'اختر صورة العرض',
+    'photo offer' => 'صورة العرض',
     'Edit Offer' => 'تعديل العرض',
     'edit' => 'تعديل',
     'delete' => 'حذف',
@@ -41,5 +42,7 @@ return [
     'success' => 'تمت اضافة منتج جديد',
     'Add Your Offer' => 'اضافة منتج جديد',
     'operation' => 'الاجراءات',
+    'error' => 'العرض غير موجود',
+    'successfully' => 'تم حذف المنتج بنجاح',
 
 ];
