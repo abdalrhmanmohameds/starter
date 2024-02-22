@@ -149,3 +149,13 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
     });
     Route::get('youtuber','CrudController@getVideo');
 });
+
+/////////////////////////////Begin ajax routes///////////////////////////
+
+Route::group(['prefix' => 'ajax-offer'],function(){
+    Route::get('create','OfferController@create');
+    Route::post('store','OfferController@store') ->name('ajax.offer.store');
+});
+
+////////////////////////////End ajax routes/////////////////////////////
+
