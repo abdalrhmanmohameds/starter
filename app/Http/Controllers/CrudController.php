@@ -102,9 +102,11 @@ class CrudController extends Controller
     public function getAllOffer()
     {
         $offers = Offer::select('id',
+            'price',
+            'photo',
             'name_' . LaravelLocalization::getCurrentLocale() . ' as name',
             'details_' . LaravelLocalization::getCurrentLocale() . ' as details',
-            'price')->get(); // return collection
+            )->get(); // return collection
         return view('offers.all', compact('offers'));
     }
 
@@ -115,7 +117,7 @@ class CrudController extends Controller
         if (!$offer)
             return redirect()->back();
         $offer = Offer::select('id', 'name_ar', 'name_en', 'details_ar', 'details_en', 'price')->find($offer_id);
-        return view('offers.edit', compact('offer'));
+        return view('ajax-offers.edit', compact('offer'));
     }
 
     public function deleteOffer($offer_id)

@@ -137,7 +137,7 @@
                 <td>{{$offer -> name}}</td>
                 <td>{{$offer -> price}}</td>
                 <td>{{$offer -> details}}</td>
-                <td><img src="{{asset('images/offers/'.$offer->photo)}}"></td>
+                <td><img style="width: 100px ; height:100px;object-fit:cover" src="{{asset('images/offers/'.$offer->photo)}}" alt="photo not found"></td>
 
                 <td>
                     <a href="{{url('offers/edit/'.$offer -> id)}}" class="btn btn-success">{{__('messages.edit')}}</a>
