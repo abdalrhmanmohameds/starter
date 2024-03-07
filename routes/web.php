@@ -112,6 +112,10 @@ Route::resource('news', 'NewsController');
 //    return view('welcome',$data,compact('obj'));
 //});
 
+Route::get('/dashboard', function () {
+    return 'not adult';
+})->name('not.adult');
+
 Route::get('/', 'Front\UserController@getIndex');
 
 ////////////route landing /////////
@@ -147,19 +151,33 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
         Route::get('delete/{offer_id}', 'CrudController@deleteOffer')->name('offers.delete');
         Route::get('all', 'CrudController@getAllOffer');
     });
-    Route::get('youtuber','CrudController@getVideo');
+    Route::get('youtuber', 'CrudController@getVideo');
 });
 
 /////////////////////////////Begin ajax routes///////////////////////////
 
-Route::group(['prefix' => 'ajax-offer'],function(){
-    Route::get('create','OfferController@create');
-    Route::post('store','OfferController@store') ->name('ajax.offer.store');
-    Route::get('all','OfferController@all') ->name('ajax.offer.all');
+Route::group(['prefix' => 'ajax-offer'], function () {
+    Route::get('create', 'OfferController@create');
+    Route::post('store', 'OfferController@store')->name('ajax.offer.store');
+    Route::get('all', 'OfferController@all')->name('ajax.offer.all');
     Route::post('delete', 'OfferController@delete')->name('ajax.offer.delete');
     Route::get('edit\{offer_id}', 'OfferController@edit')->name('ajax.offer.edit');
     Route::post('update', 'OfferController@update')->name('ajax.offer.update');
 });
 
 ////////////////////////////End ajax routes/////////////////////////////
+
+//////////////////////////Begin Authentication && Guard ////////////////////////
+Route::group(['middleware' => 'CheckAge', 'namespace' => 'auth'], function () {
+    Route::get('adult', 'CustomAuthController@adult')->name('adult');
+});
+
+Route::get('site', 'auth\CustomAuthController@site') -> middleware('auth:web') ->name('site');
+Route::get('admin', 'auth\CustomAuthController@admin') -> middleware('auth:admin') ->name('admin');
+
+
+
+Route::get('admin/login', 'auth\CustomAuthController@adminLogin') ->name('admin.login');
+Route::post('admin/login', 'auth\CustomAuthController@checkAdminLogin') ->name('save.admin.login');
+///////////////////////// End Authentication && Guard ////////////////////////
 
