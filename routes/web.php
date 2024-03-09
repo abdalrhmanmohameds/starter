@@ -151,7 +151,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
         Route::get('delete/{offer_id}', 'CrudController@deleteOffer')->name('offers.delete');
         Route::get('all', 'CrudController@getAllOffer');
     });
-    Route::get('youtuber', 'CrudController@getVideo');
+    Route::get('youtuber', 'CrudController@getVideo')->middleware('auth');
 });
 
 /////////////////////////////Begin ajax routes///////////////////////////
@@ -172,12 +172,42 @@ Route::group(['middleware' => 'CheckAge', 'namespace' => 'auth'], function () {
     Route::get('adult', 'CustomAuthController@adult')->name('adult');
 });
 
-Route::get('site', 'auth\CustomAuthController@site') -> middleware('auth:web') ->name('site');
-Route::get('admin', 'auth\CustomAuthController@admin') -> middleware('auth:admin') ->name('admin');
+Route::get('site', 'auth\CustomAuthController@site')->middleware('auth:web')->name('site');
+Route::get('admin', 'auth\CustomAuthController@admin')->middleware('auth:admin')->name('admin');
 
 
-
-Route::get('admin/login', 'auth\CustomAuthController@adminLogin') ->name('admin.login');
-Route::post('admin/login', 'auth\CustomAuthController@checkAdminLogin') ->name('save.admin.login');
+Route::get('admin/login', 'auth\CustomAuthController@adminLogin')->name('admin.login');
+Route::post('admin/login', 'auth\CustomAuthController@checkAdminLogin')->name('save.admin.login');
 ///////////////////////// End Authentication && Guard ////////////////////////
+
+
+###################### BENGIN RELATIONS ROUTES ########################
+
+Route::get('has-one', 'Relation\RelationsController@hasOnRelation');
+Route::get('has-one-reverse', 'Relation\RelationsController@hasOnRelationReverse');
+Route::get('get-user-has-phone', 'Relation\RelationsController@getUserHasPhone');
+Route::get('get-user-has-phone-with-condition', 'Relation\RelationsController@getUserWhereHasPhoneWithCondition');
+Route::get('get-user-not-has-phone', 'Relation\RelationsController@getUserNotHasPhone');
+
+###################### BEGIN ONE TWO MANY RELATIONS ROUTES ########################
+
+Route::get('hospital-has-many','Relation\RelationsController@getHospitalDoctors');
+
+
+Route::get('hospitals','Relation\RelationsController@hospitals')-> name('hospital.all');
+
+Route::get('doctors/{hospital_id}','Relation\RelationsController@doctors')-> name('hospital.doctors');
+
+Route::get('hospitals/{hospital_id}','Relation\RelationsController@deleteHospital')-> name('hospital.delete');
+
+Route::get('hospital_has_doctors','Relation\RelationsController@hospitalHasDoctor');
+
+Route::get('hospital_has_doctors_male','Relation\RelationsController@hospitalHasOnlyMale');
+
+Route::get('hospital_Not_has_doctors','Relation\RelationsController@hospitalNotHasDoctor');
+
+###################### END ONE TWO MANY RELATIONS ROUTES ########################
+
+
+###################### END RELATIONS ROUTES ########################
 
